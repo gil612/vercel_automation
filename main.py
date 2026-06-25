@@ -1,14 +1,22 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+import os
+from dotenv import load_dotenv
+
 
 app = FastAPI()
 
 class TextInput(BaseModel):
     text: str
 
+
+load_dotenv() # To load variables locally for testing
+
+SECRET_KEY = os.getenv("SECRET_KEY", "Default-Secret")
+
 @app.get("/")
 def read_root():
-    return {"message": "שרת ניתוח סנטימנט ישראלי מקומי"}
+    return {"message": f"ההודעה הסודית היא: {SECRET_KEY}"}
 
 @app.post("/analyze")
 def analyze_sentiment(input: TextInput):
