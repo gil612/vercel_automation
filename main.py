@@ -8,7 +8,7 @@ class TextInput(BaseModel):
 
 @app.get("/")
 def read_root():
-    return {"message": "שרת ניתוח סנטימנט ישראלי"}
+    return {"message": "שרת ניתוח סנטימנט ישראלי מקומי"}
 
 @app.post("/analyze")
 def analyze_sentiment(input: TextInput):
